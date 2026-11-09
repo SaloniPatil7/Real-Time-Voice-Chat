@@ -7,7 +7,7 @@ import { config } from './config.js';
 import { registerHandlers } from './handlers.js';
 import { Store } from './store.js';
 
-const clientDist = fileURLToPath(new URL('../../client/dist/', import.meta.url));
+const clientDist = fileURLToPath(new URL('../../frontend/dist/', import.meta.url));
 
 // doesn't call listen() so the tests can pick their own port
 export function createApp(overrides = {}) {
@@ -17,7 +17,7 @@ export function createApp(overrides = {}) {
   const io = new Server(httpServer, {
     pingInterval: settings.pingIntervalMs,
     pingTimeout: settings.pingTimeoutMs,
-  });
+  });                                                                  
   const store = new Store();
   registerHandlers(io, store, settings);
 
